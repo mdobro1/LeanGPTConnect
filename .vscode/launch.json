@@ -10,6 +10,22 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal"
+        }, 
+        {
+            "name": "openai_copilot with message",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "openai_copilot/main.py",
+            "console": "integratedTerminal",
+            "args": ["Tell me about Paris"]
+        },
+        {
+            "name": "openai_copilot with message & data-context",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "openai_copilot/main.py",
+            "console": "integratedTerminal",
+            "args": ["Tell me about Paris","Travel"]
         }
     ]
 }
