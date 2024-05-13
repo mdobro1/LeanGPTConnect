@@ -1,0 +1,10 @@
+{
+    "prompts": [
+        "How can I ensure security in my microservices architecture?",
+        "What authentication mechanisms are recommended for microservices?",
+        "How can I implement authorization in a microservices environment?",
+        "Can you provide examples of encryption techniques suitable for microservices communication?",
+        "What are some best practices for securing REST APIs in a microservices architecture?",
+        "How can I protect sensitive data stored in microservices databases?"
+    ]
+}

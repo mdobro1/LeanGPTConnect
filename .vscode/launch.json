@@ -12,20 +12,44 @@
             "console": "integratedTerminal"
         }, 
         {
-            "name": "openai_copilot with message",
+            "name": "main.py (message)",
             "type": "debugpy",
             "request": "launch",
-            "program": "openai_copilot/main.py",
+            "program": "main.py",
             "console": "integratedTerminal",
             "args": ["Tell me about Paris"]
         },
         {
-            "name": "openai_copilot with message & data-context",
+            "name": "main.py (message & data-context)",
             "type": "debugpy",
             "request": "launch",
-            "program": "openai_copilot/main.py",
+            "program": "main.py",
             "console": "integratedTerminal",
-            "args": ["Tell me about Paris","Travel"]
+            "args": ["Tell me about Paris","Tourism"]
+        },
+        {
+            "name": "main.py (Software Architecture)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "main.py",
+            "console": "integratedTerminal",
+            "args": [" ","Software_Architecture"]
+        },
+        {
+            "name": "main.py (Software Architecture / Batch)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "main.py",
+            "console": "integratedTerminal",
+            "args": ["user_prompts_software_architecture.json","Software_Architecture"]
+        },
+        {
+            "name": "main.py (Tourism / Batch)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "main.py",
+            "console": "integratedTerminal",
+            "args": ["user_prompts_software_architecture.json","Travel"]
         }
     ]
 }

@@ -1,6 +1,3 @@
-import os
-import json
-
 '''
 # Example usage:
 file_path = "messages.json"
@@ -9,6 +6,9 @@ directory_path = "/path/to/directory"
 messages = Message.load_from_json(file_path, directory=directory_path)
 Message.save_to_json(messages, file_path, directory=directory_path)
 '''
+
+import os
+import json
 
 class Message:
     def __init__(self, role, content):
