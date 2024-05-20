@@ -17,7 +17,7 @@
             "request": "launch",
             "program": "main.py",
             "console": "integratedTerminal",
-            "args": ["Tell me about Paris"]
+            "args": ["--user-prompt","Tell me about Paris"]
         },
         {
             "name": "main.py (message & data-context)",
@@ -25,7 +25,7 @@
             "request": "launch",
             "program": "main.py",
             "console": "integratedTerminal",
-            "args": ["Tell me about Paris","Tourism"]
+            "args": ["--user-prompt","Tell me about Paris","--data-context","Tourism"]
         },
         {
             "name": "main.py (Software Architecture)",
@@ -33,7 +33,7 @@
             "request": "launch",
             "program": "main.py",
             "console": "integratedTerminal",
-            "args": [" ","Software_Architecture"]
+            "args": ["--user-prompt"," ","--data-context","Software_Architecture"]
         },
         {
             "name": "main.py (Software Architecture / Batch)",
@@ -41,7 +41,7 @@
             "request": "launch",
             "program": "main.py",
             "console": "integratedTerminal",
-            "args": ["user_prompts_software_architecture.json","Software_Architecture"]
+            "args": ["--user-prompt","./batch_prompts/user_prompts_software_architecture.json","--data-context","Software_Architecture"]
         },
         {
             "name": "main.py (Tourism / Batch)",
@@ -49,7 +49,15 @@
             "request": "launch",
             "program": "main.py",
             "console": "integratedTerminal",
-            "args": ["user_prompts_software_architecture.json","Travel"]
+            "args": ["--user-prompt","./batch_prompts/user_prompts_travel.json","--data-context","Travel"]
+        },
+        {
+            "name": "main.py (Software Architecture, gpt-4o)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "main.py",
+            "console": "integratedTerminal",
+            "args": ["--user-prompt"," ","--data-context","Software_Architecture","--model-name","gpt-4o"]
         }
     ]
 }
