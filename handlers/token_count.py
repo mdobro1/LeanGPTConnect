@@ -13,33 +13,35 @@ class TokenCounter:
 
 
     #------------------------------------------------------------
-    def limit_tokens(self, messages):  
+    def limit_tokens(self, messages, recursive_call = False):  
     #------------------------------------------------------------
+        # validation 
+        if messages is None or len(messages) < 1:
+            return messages
+
         # init
-        result = messages
-        dict_messages = [dict(role=m.role, content=m.content) for m in messages]
-        # get initial messages token count
-        messages_token_count = TokenCounter.count_tokens(dict_messages, self.model_name)
+        result_messages = messages
+        verbose_mode = not recursive_call
 
         # go!
-        while messages_token_count > self.max_tokens_threshold:
-            # get messages token count
-            messages_token_count = TokenCounter.count_tokens(dict_messages, self.model_name)
-
+        # check if we're over the threshold
+        while TokenCounter.count_tokens(result_messages, self.model_name, verbose_mode) > self.max_tokens_threshold:
             if self.remove_first_item:
-                messages.pop(0) # FIFO: remove first message
+                result_messages.pop(0) # FIFO: remove first message
             else:
-                messages.pop() # LIFO: remove last mennsage
+                result_messages.pop() # LIFO: remove last mennsage
 
+            # switch to recursive call 
+            if not recursive_call: recursive_call = True 
             # recusively call this function until we're under the threshold
-            result = self.limit_tokens(messages, self.max_tokens_threshold, self.remove_first_item, self.model_name)  
-        
+            result_messages = self.limit_tokens(result_messages, recursive_call)  
+
         # done!
-        return result
+        return result_messages
     
     #-------------------------------------------------------------------------
     @staticmethod
-    def count_tokens(messages, model_name="gpt-3.5-turbo-0613"):
+    def count_tokens(messages, model_name="gpt-3.5-turbo-0613", verbose=True):
     #
     # source: https://github.com/openai/openai-cookbook/blob/main/examples/How_to_count_tokens_with_tiktoken.ipynb
     #-------------------------------------------------------------------------
@@ -47,7 +49,7 @@ class TokenCounter:
         try:
             encoding = tiktoken.encoding_for_model(model_name)
         except KeyError:
-            print("Warning: model not found. Using cl100k_base encoding.")
+            if verbose: print("Warning: model not found. Using cl100k_base encoding.")
             encoding = tiktoken.get_encoding("cl100k_base")
         if model_name in {
             "gpt-3.5-turbo-0613",
@@ -63,10 +65,10 @@ class TokenCounter:
             tokens_per_message = 4  # every message follows <|start|>{role/name}\n{content}<|end|>\n
             tokens_per_name = -1  # if there's a name, the role is omitted
         elif "gpt-3.5-turbo" in model_name:
-            print("Warning: gpt-3.5-turbo may update over time. Returning num tokens assuming gpt-3.5-turbo-0613.")
+            if verbose: print("Warning: gpt-3.5-turbo may update over time. Returning num tokens assuming gpt-3.5-turbo-0613.")
             return TokenCounter.count_tokens(messages, model_name="gpt-3.5-turbo-0613")
         elif "gpt-4" in model_name:
-            print("Warning: gpt-4 may update over time. Returning num tokens assuming gpt-4-0613.")
+            if verbose: print("Warning: gpt-4 may update over time. Returning num tokens assuming gpt-4-0613.")
             return TokenCounter.count_tokens(messages, model_name="gpt-4-0613")
         else:
             raise NotImplementedError(

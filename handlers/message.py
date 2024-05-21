@@ -63,3 +63,15 @@ class Message:
     def deserialize_messages(json_data):
     #------------------------------------------------------------------------------------------------
         return [Message(**message) for message in json_data]  
+
+    #------------------------------------------------------------------------------------------------
+    @staticmethod
+    def to_dict(messages):
+    #------------------------------------------------------------------------------------------------
+        return [dict(role=m.role, content=m.content) for m in messages]
+
+    #------------------------------------------------------------------------------------------------
+    @staticmethod
+    def to_objects(messages):
+    #------------------------------------------------------------------------------------------------
+        return [Message(role=m['role'], content=m['content']) for m in messages]

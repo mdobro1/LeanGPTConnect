@@ -91,14 +91,17 @@ class CopilotHandler:
             if os.path.exists(setup_chat_path):
                 setup_messages = Message.load_from_json(setup_chat_file, data_directory)
 
-            # limit setup / user messages by max token count (remove oldest message if too much tokens)
-            remove_first_message_if_too_much_tokens = True
-            # check setup tokens 
-            token_counter_setup = TokenCounter(model_name, max_tokens_per_message_setup, remove_first_message_if_too_much_tokens)
-            setup_messages = token_counter_setup.limit_tokens(setup_messages)
-            # check user tokens 
-            token_counter_user = TokenCounter(model_name, max_tokens_per_message_user, remove_first_message_if_too_much_tokens)
-            user_messages = token_counter_user.limit_tokens(user_messages)
+            # limit setup messages by max token count 
+            LIFO = False # Last In First OUT - remove newest messages if too much tokens
+            token_counter_setup = TokenCounter(model_name, max_tokens_per_message_setup, LIFO)
+            setup_messages = token_counter_setup.limit_tokens(Message.to_dict(setup_messages))
+            setup_messages = Message.to_objects(setup_messages)
+            
+            # limit user messages by max token count
+            FIFO = True # Last In First OUT - remove oldest messages if too much tokens
+            token_counter_user = TokenCounter(model_name, max_tokens_per_message_user, FIFO)
+            user_messages = token_counter_user.limit_tokens(Message.to_dict(user_messages))
+            user_messages = Message.to_objects(user_messages)
 
             # combine all messages
             chat_messages = setup_messages + user_messages
