@@ -1,7 +1,7 @@
 # LeanGPTConnect
-Demo code for OpenAI API
+Lean OpenAI API client.
 
-This project contains Python demo-code for OpenAI API
+This project contains python demo-code and lean client for OpenAI API.
 
 # Usage of LeanGPTConnect
 
@@ -21,3 +21,9 @@ python lean_gpt.py [-h] [--user-prompt USER_PROMPT]
 
   ## Usage examples:
 
++ python lean_gpt.py
++ python lean_gpt.py --user-prompt "Tell me about Paris" --data-context Tourism
++ python lean_gpt.py --user-prompt "Tell me about Paris" --data-context /temp/chat-copilot/tourism
++ python lean_gpt.py --user-prompt "Tell me about Paris" --data-context Poetry
++ python lean_gpt.py --user-prompt "Tell me about Paris" --data-context Poetry_DE
++ python lean_gpt.py --user-prompt "Tell me about Paris" --data-context Poetry_DE --model-name gpt-4-turbo-preview
