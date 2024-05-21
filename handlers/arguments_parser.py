@@ -23,11 +23,11 @@ class ArgumentsParser:
     def __init__(self):
     #------------------------------------------------------------------------------------------------
         self.parser = argparse.ArgumentParser(description="Parser for handling arguments")
-        self.parser.add_argument("--user-prompt", type=str, default=None, help="User prompt for the chat")
-        self.parser.add_argument("--data-context", type=str, default=None, help="Data context for the chat")
-        self.parser.add_argument("--model-name", type=str, default="gpt-3.5-turbo", help="LLM-Model name to use")
-        self.parser.add_argument("--setup-part", type=int, default=20, help="Setup messages part percentage")
-        self.parser.add_argument("--user-part", type=int, default=80, help="User messages part percentage")
+        self.parser.add_argument("--user-prompt", type=str, default=None, help="User prompt for the chat (default=None)")
+        self.parser.add_argument("--data-context", type=str, default=None, help="Data context for the chat (default=None)")
+        self.parser.add_argument("--model-name", type=str, default="gpt-3.5-turbo", help="LLM-Model name to use (default=\"gpt-3.5-turbo\")")
+        self.parser.add_argument("--setup-part", type=int, default=20, help="Setup messages part percentage (default=20 percent)")
+        self.parser.add_argument("--user-part", type=int, default=80, help="User messages part percentage (default=80 percent)")
     
     #------------------------------------------------------------------------------------------------
     def parse_args(self):
