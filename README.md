@@ -6,7 +6,8 @@ This project contains Python demo-code for OpenAI API
 # Usage of LeanGPTConnect
 
 ```sh
-python  main.py [-h] [--user-prompt USER_PROMPT] [--data-context DATA_CONTEXT] [--model-name MODEL_NAME] 
+python  main.py [-h] [--user-prompt USER_PROMPT]
+                [--data-context DATA_CONTEXT] [--model-name MODEL_NAME] 
                 [--setup-part SETUP_PART] [--user-part USER_PART]
 ```
 
