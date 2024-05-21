@@ -27,4 +27,4 @@ python lean_gpt.py [-h] [--user-prompt USER_PROMPT]
 + python lean_gpt.py --user-prompt "Tell me about Paris" --data-context Poetry
 + python lean_gpt.py --user-prompt "Tell me about Paris" --data-context Poetry_DE
 + python lean_gpt.py --user-prompt "Tell me about Paris" --data-context Poetry_DE 
-                     --model-name gpt-4-turbo-preview
+                    --model-name gpt-4-turbo-preview
