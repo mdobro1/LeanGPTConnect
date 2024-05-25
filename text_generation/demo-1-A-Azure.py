@@ -7,8 +7,12 @@ client = AzureOpenAI(
     azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
     )
 
+# you could also use custom name you chose 
+# for your deployment when you deployed a model. 
+my_openai_model = "gpt-35-turbo-instruct"
+
 response = client.completions.create(
-  model="gpt-3.5-turbo-instruct",
+  model=my_openai_model,
   prompt="Tell me about capital of France"
 )
 
