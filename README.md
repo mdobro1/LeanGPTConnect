@@ -78,7 +78,7 @@ print("\n" + response.choices[0].text.strip())
 You could set following environment variables:
 
 + for OpenAI client - **OPENAI_API_KEY** - for OpenAI API key.
-+ for Azure client - **AZURE_OPENAI_API_KEY** and **AZURE_OPENAI_ENDPOINT** - for respecitvely API key and entpooint-url of the Azure OpenAI-Service.
++ for Azure client - **AZURE_OPENAI_API_KEY** and **AZURE_OPENAI_ENDPOINT** - for respecitvely API key and Endpoint-URL of your Azure OpenAI-Service.
 
 Then i.e. the OpenAI client intitialization could look even simpler:
 
