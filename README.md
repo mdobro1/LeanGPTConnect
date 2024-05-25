@@ -33,7 +33,7 @@ python lean_gpt.py [-h] [--user-prompt USER_PROMPT]
 
 Although the default option for API client is OpenAI API you could easely switch to Azure API client simply by using __AzureOpenAI__ instead of __OpenAI__ client class (see examples below).
 
-Completion example using OpenAI Client:
+Completion example using **OpenAI** client:
 ```
 import os
 from openai import OpenAI
@@ -50,7 +50,7 @@ response = client.completions.create(
 print("\n" + response.choices[0].text.strip())
 ```
 
-Completion example using Azure Client:
+Completion example using **Azure** client:
 ```
 import os
 from openai import AzureOpenAI
