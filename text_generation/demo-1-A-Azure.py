@@ -1,8 +1,10 @@
-from openai import OpenAI
+from openai import AzureOpenAI
 import os
 
-client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY")
+client = AzureOpenAI(
+    api_key=os.getenv("OPENAI_API_KEY"),  
+    api_version="2024-02-01",
+    azure_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
     )
 
 response = client.completions.create(
