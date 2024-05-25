@@ -1,5 +1,5 @@
-from openai import AzureOpenAI
 import os
+from openai import AzureOpenAI
 
 client = AzureOpenAI(
     api_key=os.getenv("OPENAI_API_KEY"),  
