@@ -20,12 +20,15 @@ python lean_gpt.py [-h] [--user-prompt USER_PROMPT]
   + **--model-name _<MODEL_NAME>_**         LLM-Model name to use (default="gpt-3.5-turbo")
   + **--setup-part _<SETUP_PART>_**         Setup messages part percentage (default=20 percent)
   + **--user-part _<USER_PART>_**           User messages part percentage (default=80 percent)
-  + **--api-key _<API-KEY>_**               OpenAI API Key (default=None or OPENAI_API_KEY environment variable)
-  + **--api-url _<AZURE-OPENAI-ENDPOINT>_** Endpoint-URL of the Azure OpenAI service (default=None or AZURE_OPENAI_ENDPOINT environment variable)
-  + **--api-version _<API-VERSION>_**       Version of Azure OpenAI service (default="2024-02-01")
-  + **--api-platform _OpenAI | Azure_**     API-Platform - OpenAI or Azure service (default="OpenAI" or OPENAI_PLATFORM environment variable)
+  + **--api-key _<API-KEY>_**               OpenAI API Key (default=OPENAI_API_KEY or AZURE_OPENAI_API_KEY environment variable)
+  + **--api-url _<AZURE-OPENAI-ENDPOINT>_** Endpoint-URL of the Azure OpenAI service (relevant for Azure: default=AZURE_OPENAI_ENDPOINT environment variable)
+  + **--api-version _<API-VERSION>_**       Version of Azure OpenAI service (relevant for Azure: default="2024-02-01")
+  + **--api-platform _OpenAI | Azure_**     API-Platform - OpenAI or Azure service (default=OPENAI_API_PLATFORM environment variable or "OpenAI")
 
-  Notification: instead of _api-key_, _api-url_ and _api-platform_ command-line parameters you could also respectively use **OPENAI_API_KEY**/**AZURE_OPENAI_API_KEY**, **AZURE_OPENAI_ENDPOINT** and **OPENAI_PLATFORM** environment variables (see Chatpter ["Environment variables"](https://github.com/mdobro1/LeanGPTConnect?tab=readme-ov-file#environment-variables) below). 
+  Notification: 
+  
+  + Instead of _api-key_, _api-url_ and _api-platform_ command-line parameters you could also respectively use **OPENAI_API_KEY**/**AZURE_OPENAI_API_KEY**, **AZURE_OPENAI_ENDPOINT** and **OPENAI_API_PLATFORM** environment variables (see Chatpter ["Environment variables"](https://github.com/mdobro1/LeanGPTConnect?tab=readme-ov-file#environment-variables) below). 
+  + If both **OPENAI_API_KEY** and **AZURE_OPENAI_API_KEY** environment variables are set **OPENAI_API_KEY** will be used as default value. Use explicit _api-key_, _api-url_ and _api-platform_ arguments if you'd like to use both API plattforms in the same environment.
   
   ***Arguments _api-key_, _api-url_ and _api-platform_ have higher priority and (if given) do override corresponding values of the environment variables.***
 
@@ -89,9 +92,12 @@ You could set following environment variables:
 
 + for OpenAI client - **OPENAI_API_KEY** - for OpenAI API key.
 + for Azure client - **AZURE_OPENAI_API_KEY** and **AZURE_OPENAI_ENDPOINT** - for respecitvely API key and api-url of your Azure OpenAI-Service.
-+ for API Plattform - **OPENAI_PLATFORM**=_'OpenAI'_ or _'Azure'_ for respectively OpenAI or Azure as API platform.
++ for API Plattform - **OPENAI_API_PLATFORM**=_'OpenAI'_ or _'Azure'_ for respectively OpenAI or Azure as API platform.
 
-Notification: instead of **OPENAI_API_KEY**/**AZURE_OPENAI_API_KEY**, **AZURE_OPENAI_ENDPOINT** and **OPENAI_PLATFORM** environment variables you could also respectively use _api-key_, _api-url_ and _api-platform_ arguments (command-line parameters, see Chatpter ["Arguments"](https://github.com/mdobro1/LeanGPTConnect?tab=readme-ov-file#optional-arguments) above).
+Notifications: 
+
++ Instead of **OPENAI_API_KEY**/**AZURE_OPENAI_API_KEY**, **AZURE_OPENAI_ENDPOINT** and **OPENAI_API_PLATFORM** environment variables you could also respectively use _api-key_, _api-url_ and _api-platform_ arguments (command-line parameters, see Chatpter ["Arguments"](https://github.com/mdobro1/LeanGPTConnect?tab=readme-ov-file#optional-arguments) above). 
++ If both **OPENAI_API_KEY** and **AZURE_OPENAI_API_KEY** environment variables are set **OPENAI_API_KEY** will be used as default value. Use explicit _api-key_, _api-url_ and _api-platform_ arguments if you'd like to use both API plattforms in the same environment.
 
 ***Arguments _api-key_, _api-url_ and _api-platform_ have higher priority and (if given) do override corresponding values of the environment variables.***
 

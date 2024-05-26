@@ -16,19 +16,19 @@ class CopilotHandler:
         self.api_platform : str = self.run_arguments.api_platform
         
         # get OpeanAI or Azure as API platform (default is OpenAI)
-        if not self.api_platform or "openai" in self.api_platform.lower():
+        if not self.api_platform or "azure" in self.api_platform.lower():
+            self.api_client = AzureOpenAI(
+                api_key=self.run_arguments.api_key,  
+                api_version=self.run_arguments.api_version,
+                azure_endpoint = self.run_arguments.api_url
+                )
+        else:
             if self.run_arguments.api_key:
                 self.api_client = OpenAI(
                     api_key=self.run_arguments.api_key
                     )
             else:
                 self.api_client = OpenAI()
-        else:
-            self.api_client = AzureOpenAI(
-                api_key=self.run_arguments.api_key,  
-                api_version="2024-02-01",
-                azure_endpoint = self.run_arguments.api_url
-                )
         
 
     #------------------------------------------------------------------------------------------------
