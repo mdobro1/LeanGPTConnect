@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-from openai import OpenAI
+from openai import OpenAI, AzureOpenAI
 from handlers.message import Message
 from handlers.batch_prompt import BatchPrompt
 from handlers.token_count import TokenCounter
@@ -13,6 +13,23 @@ class CopilotHandler:
     def __init__(self, run_arguments):
     #------------------------------------------------------------------------------------------------
         self.run_arguments = run_arguments
+        self.api_platform : str = self.run_arguments.api_platform
+        
+        # get OpeanAI or Azure as API platform (default is OpenAI)
+        if not self.api_platform or "openai" in self.api_platform.lower():
+            if self.run_arguments.api_key:
+                self.api_client = OpenAI(
+                    api_key=self.run_arguments.api_key
+                    )
+            else:
+                self.api_client = OpenAI()
+        else:
+            self.api_client = AzureOpenAI(
+                api_key=self.run_arguments.api_key,  
+                api_version="2024-02-01",
+                azure_endpoint = self.run_arguments.api_url
+                )
+        
 
     #------------------------------------------------------------------------------------------------
     def run(self):
@@ -107,8 +124,7 @@ class CopilotHandler:
             chat_messages = setup_messages + user_messages
 
             # call OpenAI chat completion API
-            client = OpenAI()
-            completion = client.chat.completions.create( \
+            completion = self.api_client.chat.completions.create( \
                 model=model_name,  messages=Message.serialize_messages(chat_messages))
 
             # assitant response

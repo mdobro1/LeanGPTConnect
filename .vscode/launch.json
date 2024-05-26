@@ -12,50 +12,50 @@
             "console": "integratedTerminal"
         }, 
         {
-            "name": "main.py (message)",
+            "name": "lean_gpt (message)",
             "type": "debugpy",
             "request": "launch",
-            "program": "main.py",
+            "program": "lean_gpt.py",
             "console": "integratedTerminal",
             "args": ["--user-prompt","Tell me about Paris"]
         },
         {
-            "name": "main.py (message & data-context)",
+            "name": "lean_gpt (message & data-context)",
             "type": "debugpy",
             "request": "launch",
-            "program": "main.py",
+            "program": "lean_gpt.py",
             "console": "integratedTerminal",
             "args": ["--user-prompt","Tell me about Paris","--data-context","Tourism"]
         },
         {
-            "name": "main.py (Software Architecture)",
+            "name": "lean_gpt (Software Architecture)",
             "type": "debugpy",
             "request": "launch",
-            "program": "main.py",
+            "program": "lean_gpt.py",
             "console": "integratedTerminal",
             "args": ["--user-prompt"," ","--data-context","Software_Architecture"]
         },
         {
-            "name": "main.py (Software Architecture / Batch)",
+            "name": "lean_gpt (Software Architecture / Batch)",
             "type": "debugpy",
             "request": "launch",
-            "program": "main.py",
+            "program": "lean_gpt.py",
             "console": "integratedTerminal",
             "args": ["--user-prompt","./batch_prompts/user_prompts_software_architecture.json","--data-context","Software_Architecture"]
         },
         {
-            "name": "main.py (Tourism / Batch)",
+            "name": "lean_gpt (Tourism / Batch)",
             "type": "debugpy",
             "request": "launch",
-            "program": "main.py",
+            "program": "lean_gpt.py",
             "console": "integratedTerminal",
             "args": ["--user-prompt","./batch_prompts/user_prompts_travel.json","--data-context","Travel"]
         },
         {
-            "name": "main.py (Software Architecture, gpt-4o)",
+            "name": "lean_gpt (Software Architecture, gpt-4o)",
             "type": "debugpy",
             "request": "launch",
-            "program": "main.py",
+            "program": "lean_gpt.py",
             "console": "integratedTerminal",
             "args": ["--user-prompt"," ","--data-context","Software_Architecture","--model-name","gpt-4o"]
         }
