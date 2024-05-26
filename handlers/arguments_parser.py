@@ -29,14 +29,17 @@ class ArgumentsParser:
         self.parser.add_argument("--model-name", type=str, default="gpt-3.5-turbo", help="LLM-Model name to use (default=\"gpt-3.5-turbo\")")
         self.parser.add_argument("--setup-part", type=int, default=20, help="Setup messages part percentage (default=20 percent)")
         self.parser.add_argument("--user-part", type=int, default=80, help="User messages part percentage (default=80 percent)")
-        self.parser.add_argument("--api-key", type=str, default=os.getenv("OPENAI_API_KEY"), help="OpenAI API Key")
-        self.parser.add_argument("--api-url", type=str, default=os.getenv("OPENAI_API_URL"), help="Endpoint-URL of the Azure OpenAI service")
+        self.parser.add_argument("--api-key", type=str, default=os.getenv("OPENAI_API_KEY"), \
+                                 help="Original OpenAI API Key or Azure OpenAI service API Key (default=None or \"OPENAI_API_KEY\" environment variable)")
+        self.parser.add_argument("--api-url", type=str, default=os.getenv("AZURE_OPENAI_ENDPOINT"), \
+                                 help="Endpoint-URL of the Azure OpenAI service (default=None or \"AZURE_OPENAI_ENDPOINT\" environment variable)")
         
         default_api_platform = os.getenv("OPENAI_API_PLATFORM")
         if not default_api_platform:
             default_api_platform = "OpenAI"
         
-        self.parser.add_argument("--api-platform", type=str, default=default_api_platform, help="API-Platform - OpenAI or Azure service")
+        self.parser.add_argument("--api-platform", type=str, default=default_api_platform, \
+                                 help="API-Platform - OpenAI or Azure service (default=\"OpenAI\" or \"OPENAI_PLATFORM\" environment variable)")
     
     #------------------------------------------------------------------------------------------------
     def parse_args(self):
