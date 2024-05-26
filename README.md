@@ -25,7 +25,7 @@ python lean_gpt.py [-h] [--user-prompt USER_PROMPT]
   + **--api-version _<API-VERSION>_**       Version of Azure OpenAI service (default="2024-02-01")
   + **--api-platform _OpenAI | Azure_**     API-Platform - OpenAI or Azure service (default="OpenAI")
 
-  Notification: instead of _api-key_, _api-url_ and _api-platform_ command-line parameters you could also respectively use **OPENAI_API_KEY**, **OPENAI_API_URL** and **OPENAI_PLATFORM** environment variables (see Chatpter "Environment variables" above).
+  Notification: instead of _api-key_, _api-url_ and _api-platform_ command-line parameters you could also respectively use **OPENAI_API_KEY**, **OPENAI_API_URL** and **OPENAI_PLATFORM** environment variables (see Chatpter ["Environment variables"](https://github.com/mdobro1/LeanGPTConnect?tab=readme-ov-file#environment-variables) below).
 
 ## Usage examples:
 
@@ -89,7 +89,7 @@ You could set following environment variables:
 + for Azure client - **OPENAI_API_KEY** and **OPENAI_API_URL** - for respecitvely API key and api-url of your Azure OpenAI-Service.
 + for API Plattform - **OPENAI_PLATFORM**=_'OpenAI'_ or _'Azure'_ for respectively OpenAI or Azure as API platform.
 
-Notification: instead of **OPENAI_API_KEY**, **OPENAI_API_URL** and **OPENAI_PLATFORM** environment variables you could also respectively use _api-key_, _api-url_ and _api-platform_ command-line parameters (see Chatpter "Arguments" above).
+Notification: instead of **OPENAI_API_KEY**, **OPENAI_API_URL** and **OPENAI_PLATFORM** environment variables you could also respectively use _api-key_, _api-url_ and _api-platform_ command-line parameters (see Chatpter ["Arguments"](https://github.com/mdobro1/LeanGPTConnect?tab=readme-ov-file#optional-arguments) above).
 
 Then i.e. the OpenAI client intitialization could look even simpler:
 
