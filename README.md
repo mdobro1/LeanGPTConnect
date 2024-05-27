@@ -15,7 +15,7 @@ python lean_gpt.py [-h] [--user-prompt USER_PROMPT]
 
 ## (Optional) Arguments:
   + **-h, --help**                            show this help message and exit
-  + **--user-prompt _<USER_PROMPT | Batch-Prompts as JSON-filepath>_**  User prompt for the chat (default=None) or path to Batch-Prompts as JSON-file
+  + **--user-prompt _<USER_PROMPT | Batch-Prompts as JSON-filepath>_**  User prompt for the chat (default=None) or path to batch-prompts as JSON-file
   + **--data-context _<DATA_CONTEXT>_**       Data context for the chat (default=None)
   + **--model-name _<MODEL_NAME>_**           Model name to use or deployment name of the OpenAI service in Azure (default="gpt-3.5-turbo")
   + **--setup-part _<SETUP_PART>_**           Setup messages part percentage (default=20 percent)
