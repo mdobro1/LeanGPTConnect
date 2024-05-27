@@ -14,16 +14,17 @@ python lean_gpt.py [-h] [--user-prompt USER_PROMPT]
 ```
 
 ## (Optional) Arguments:
-  + **-h, --help**                          show this help message and exit
-  + **--user-prompt _<USER_PROMPT>_**       User prompt for the chat (default=None)
-  + **--data-context _<DATA_CONTEXT>_**     Data context for the chat (default=None)
-  + **--model-name _<MODEL_NAME>_**         Model name to use or deployment name of the OpenAI service in Azure (default="gpt-3.5-turbo")
-  + **--setup-part _<SETUP_PART>_**         Setup messages part percentage (default=20 percent)
-  + **--user-part _<USER_PART>_**           User messages part percentage (default=80 percent)
-  + **--api-key _<API-KEY>_**               OpenAI API Key (default=OPENAI_API_KEY or AZURE_OPENAI_API_KEY environment variable)
-  + **--api-url _<AZURE-OPENAI-ENDPOINT>_** Endpoint-URL of the Azure OpenAI service (relevant for Azure: default=AZURE_OPENAI_ENDPOINT environment variable)
-  + **--api-version _<API-VERSION>_**       Version of Azure OpenAI service (relevant for Azure: default="2024-02-01")
-  + **--api-platform _OpenAI | Azure_**     API-Platform - OpenAI or Azure service (default=OPENAI_API_PLATFORM environment variable or "OpenAI")
+  + **-h, --help**                            show this help message and exit
+  + **--user-prompt _<USER_PROMPT **
+      **| Batch-Prompts as JSON-filepath>_**  User prompt for the chat (default=None) or path to Batch-Prompts as JSON-file
+  + **--data-context _<DATA_CONTEXT>_**       Data context for the chat (default=None)
+  + **--model-name _<MODEL_NAME>_**           Model name to use or deployment name of the OpenAI service in Azure (default="gpt-3.5-turbo")
+  + **--setup-part _<SETUP_PART>_**           Setup messages part percentage (default=20 percent)
+  + **--user-part _<USER_PART>_**             User messages part percentage (default=80 percent)
+  + **--api-key _<API-KEY>_**                 OpenAI API Key (default=OPENAI_API_KEY or AZURE_OPENAI_API_KEY environment variable)
+  + **--api-url _<AZURE-OPENAI-ENDPOINT>_**   Endpoint-URL of the Azure OpenAI service (relevant for Azure: default=AZURE_OPENAI_ENDPOINT environment variable)
+  + **--api-version _<API-VERSION>_**         Version of Azure OpenAI service (relevant for Azure: default="2024-02-01")
+  + **--api-platform _OpenAI | Azure_**       API-Platform - OpenAI or Azure service (default=OPENAI_API_PLATFORM environment variable or "OpenAI")
 
   Notification: 
   
@@ -37,6 +38,7 @@ python lean_gpt.py [-h] [--user-prompt USER_PROMPT]
 + python lean_gpt.py
 + python lean_gpt.py --user-prompt "Tell me about Paris" --data-context Tourism
 + python lean_gpt.py --user-prompt "Tell me about Paris" --data-context /temp/chat-copilot/tourism
++ python lean_gpt.py --user-prompt "./batch_prompts/user_prompts_travel.json" --data-context Travel
 + python lean_gpt.py --user-prompt "Tell me about Paris" --data-context Poetry
 + python lean_gpt.py --user-prompt "Tell me about Paris" --data-context Poetry_DE
 + python lean_gpt.py --user-prompt "Tell me about Paris" --data-context Poetry_DE 
@@ -112,6 +114,29 @@ response = client.completions.create(
   model="gpt-3.5-turbo-instruct",
   prompt="Tell me about capital of France"
 )
+```
+
+## Batch prompts
+
+If _user-prompt_-parameter contains path to Batch-Prompts as JSON-file, then OpenAI-API will be run in batch mode for each of the user-prompts from the JSON batch file (see example below).
+
+Example of the batch prompts:
+```
+  python lean_gpt.py --user-prompt "./batch_prompts/user_prompts_travel.json" --data-context Travel
+```
+
+Example of the batch prompt JSON-file user_prompts_travel.json:
+```
+{
+    "prompts": [
+        "How can I ensure security in my microservices architecture?",
+        "What authentication mechanisms are recommended for microservices?",
+        "How can I implement authorization in a microservices environment?",
+        "Can you provide examples of encryption techniques suitable for microservices communication?",
+        "What are some best practices for securing REST APIs in a microservices architecture?",
+        "How can I protect sensitive data stored in microservices databases?"
+    ]
+}				
 ```
 
 ## Links
