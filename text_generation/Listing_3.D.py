@@ -1,9 +1,7 @@
 from openai import OpenAI
 
-client = OpenAI()
-
-completion = client.chat.completions.create(
-  model="gpt-3.5-turbo",
+completion = OpenAI().chat.completions.create(
+  model="gpt-4-turbo-preview",
   messages=[
     {"role": "system", "content": "You are a poetic assistant, skilled in explaining different facts and concepts with creative flair. Use German language in output."},
     {"role": "user", "content": "Tell me about capital of France."}

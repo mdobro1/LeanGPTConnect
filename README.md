@@ -17,7 +17,7 @@ python lean_gpt.py [-h] [--user-prompt USER_PROMPT]
   + **-h, --help**                          show this help message and exit
   + **--user-prompt _<USER_PROMPT>_**       User prompt for the chat (default=None)
   + **--data-context _<DATA_CONTEXT>_**     Data context for the chat (default=None)
-  + **--model-name _<MODEL_NAME>_**         LLM-Model name to use (default="gpt-3.5-turbo")
+  + **--model-name _<MODEL_NAME>_**         Model name to use or deployment name of the OpenAI service in Azure (default="gpt-3.5-turbo")
   + **--setup-part _<SETUP_PART>_**         Setup messages part percentage (default=20 percent)
   + **--user-part _<USER_PART>_**           User messages part percentage (default=80 percent)
   + **--api-key _<API-KEY>_**               OpenAI API Key (default=OPENAI_API_KEY or AZURE_OPENAI_API_KEY environment variable)
