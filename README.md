@@ -1,7 +1,7 @@
 # LeanGPTConnect
 Lean OpenAI API client.
 
-This project contains python demo-code and lean client for text generatin with OpenAI API on Azure and/or OpenAI plattforms.
+This project contains python demo-code and lean client for text generation with OpenAI API on Azure and/or OpenAI plattforms.
 
 ## Usage of LeanGPTConnect
 
