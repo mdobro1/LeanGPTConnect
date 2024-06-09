@@ -10,12 +10,16 @@ response = OpenAI().chat.completions.create(
     {
       "role": "user",
       "content": [
-        {"type": "text", "text": "Write about what do you see."},
         {"type": "image_url","image_url": { "url": images_urls.get("Paris") }},
-        {"type": "text", "text": "Write a poem in German."}
+        {"type": "text", "text": "Write about what do you see."},
+        {"type": "text", "text": "Write a poem in German."},
       ]
     }
   ], max_tokens=1000
 )
 
-print(f"\n{response.choices[0].message.content}")
+# print & save result
+result = response.choices[0].message.content
+print(result)
+with open(f"./demo/vision/Listing_3_Response.txt", "w", encoding="utf-8") as outfile: 
+  outfile.write(result)

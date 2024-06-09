@@ -19,4 +19,8 @@ response = OpenAI().chat.completions.create(
   ], max_tokens=3000
 )
 
-print(f"\n{response.choices[0].message.content}")
+# print & save result
+result = response.choices[0].message.content
+print(result)
+with open(f"./demo/vision/Listing_4_Response.md", "w", encoding="utf-8") as outfile: 
+  outfile.write(result)
