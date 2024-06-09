@@ -2,12 +2,11 @@ import json
 import base64
 from openai import OpenAI
 
-with open("./demo/vision/images_list.json", 'r') as file:  images_urls = json.load(file)
+# encode the image
+with open("./demo/vision/ArchitecturePic1.jpg", "rb") as image_file:
+  base64_image = base64.b64encode(image_file.read()).decode('utf-8')
 
-def encode_image(image_path):
-  with open(image_path, "rb") as image_file:
-    return base64.b64encode(image_file.read()).decode('utf-8')
-
+# send encoded image via OpenAI API 
 response = OpenAI().chat.completions.create(
   model="gpt-4o",
   messages=[
@@ -15,8 +14,8 @@ response = OpenAI().chat.completions.create(
     {
       "role": "user",
       "content": [
-        {"type": "text", "text": "Analyse architecture."},
-        {"type": "image_url","image_url": { "url": images_urls.get("Azure-1") }},
+        {"type": "text", "text": "Analyse architecture. Make output as README-markdown."},
+        {"type": "image_url","image_url": { "url": f"data:image/jpeg;base64,{base64_image}" }},
       ]
     }
   ], max_tokens=1000

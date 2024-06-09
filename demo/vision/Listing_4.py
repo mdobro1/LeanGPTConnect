@@ -10,12 +10,13 @@ response = OpenAI().chat.completions.create(
     {
       "role": "user",
       "content": [
-        {"type": "text", "text": "Compare the pros and cons of the sightseens. Make output in German in README-markdown."},
+        {"type": "text", "text": "Make detailed description and comparison of the pros and cons of the given sightseens."},
+        {"type": "text", "text": "Make output in German as README-markdown."},
         {"type": "image_url", "image_url": { "url": images_urls.get("London") }},
         {"type": "image_url","image_url": { "url": images_urls.get("Paris") }},
       ]
     }
-  ], max_tokens=1000
+  ], max_tokens=3000
 )
 
 print(f"\n{response.choices[0].message.content}")
