@@ -1,7 +1,12 @@
-from openai import OpenAI
 import json
+import base64
+from openai import OpenAI
 
 with open("./demo/vision/images_list.json", 'r') as file:  images_urls = json.load(file)
+
+def encode_image(image_path):
+  with open(image_path, "rb") as image_file:
+    return base64.b64encode(image_file.read()).decode('utf-8')
 
 response = OpenAI().chat.completions.create(
   model="gpt-4o",

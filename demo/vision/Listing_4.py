@@ -1,5 +1,5 @@
-from openai import OpenAI
 import json
+from openai import OpenAI
 
 with open("./demo/vision/images_list.json", 'r') as file:  images_urls = json.load(file)
 

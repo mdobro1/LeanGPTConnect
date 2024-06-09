@@ -1,23 +1,29 @@
 import os
-from openai import AzureOpenAI
+import requests
+import json
+from openai import OpenAI
 
-# Azure OpenAI endpoint like:
-#  https://<MY_RESOURCE>.openai.azure.com/openai/deployments/<MY_DEPLOYMENT>/extensions"
+api_key = os.getenv("OPENAI_API_KEY")
 
-response = AzureOpenAI(
-    api_key=os.getenv("AZURE_OPENAI_API_KEY"),  
-    api_version='2023-12-01-preview',
-    base_url=os.getenv("AZURE_OPENAI_ENDPOINT")).chat.completions.create(
-            model="<MY_DEPLOYMENT>",
-            messages=[
-              {
-                "role": "user",
-                "content": [
-                  {"type": "text", "text": "What do you see in this image?"},
-                  {"type": "image_url", "image_url": { "url": "https://bit.ly/img_city_1" }}
-                ]
-              }
-            ], max_tokens=1000
-          )
+headers = {
+  "Content-Type": "application/json",
+  "Authorization": f"Bearer {api_key}"
+}
 
-print(response.choices[0].message.content)
+payload = {
+  "model": "gpt-4o",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+          {"type": "text", "text": "What do you see in this image?"},
+          {"type": "image_url", "image_url": { "url": "https://bit.ly/img_city_1" }}
+      ]
+    }
+  ], "max_tokens": 1000
+}
+
+response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
+response_data = json.loads(response.text)
+
+print(response_data.get("choices")[0].get("message").get("content"))
