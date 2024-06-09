@@ -1,53 +1,40 @@
-# Financial Data Analytics Application
+## Financial Data Processing and Analytics Architecture
 
-This project details a Financial Data Analytics application deployed using Microsoft Azure services. The architecture incorporates various Azure components to enable real-time financial data analysis via a web or mobile interface.
-
-## Architecture Diagram
+This architecture illustrates how financial data is processed and analyzed using Azure services. Below is a detailed explanation of each component and their interactions.
 
 ![Architecture Diagram](ArchitecturePic1.jpg)
 
-## Components
+### Components Description
 
 1. **Browser / Mobile App**
-    - The front-end user interface through which users can access the application.
-    - Interactive and responsive UI for accessing financial insights.
+   - This is the front-end interface where users interact with the system.
+   - Users can access and interact with the financial data through web browsers or mobile applications.
 
 2. **Azure App Service**
-    - A fully managed platform for building, deploying, and scaling web apps.
-    - Hosts the backend logic and handles requests from the Browser/Mobile app.
-    - Interacts with the Azure Database for data operations.
+   - This is the core of the web application where the business logic is executed.
+   - Receives requests from the browser/mobile app and processes these requests.
+   - Interacts with the financial data source to fetch or manipulate the necessary data.
 
-3. **Azure Database for PostgreSQL**
-    - A managed database service for app development and deployment.
-    - Serves as the financial data source.
-    - Stores data retrieved from various financial data sources.
+3. **Financial Data from Multiple Sources**
+   - Represents the various external financial data sources that provide raw financial information.
+   - This data is collected and then sent to the Azure App Service for processing.
 
-4. **Power BI**
-    - A suite of business analytics tools to analyze data and share insights.
-    - Connects to the Azure Database for PostgreSQL to perform financial analytics.
-    - Visualizes financial data through interactive reports and dashboards.
+4. **Azure Database for PostgreSQL**
+   - This is the primary data storage component.
+   - It stores processed financial data retrieved and manipulated by the Azure App Service.
+   - Serves as the financial data source for further analytics and reporting.
 
-5. **Financial Data from Multiple Sources**
-    - Various external financial data sources integrated into the system.
-    - Feeds data into the Azure Database for PostgreSQL for further processing and analysis.
+5. **Power BI**
+   - A business analytics tool.
+   - Connects to the Azure Database for PostgreSQL to retrieve financial data.
+   - Provides advanced analytics and visualization capabilities, enabling the end users to gain insights from the financial data.
 
-## Data Flow
+### Workflow
 
-1. Users interact with the application through the **Browser/Mobile App**.
-2. The app sends requests to the **Azure App Service**.
-3. The **Azure App Service** processes the requests and interacts with the **Azure Database for PostgreSQL** to retrieve or store financial data.
-4. The **Azure Database for PostgreSQL** fetches data from multiple financial data sources and maintains it.
-5. **Power BI** accesses the financial data stored in the **Azure Database for PostgreSQL** for analysis and generates analytical reports.
-6. Users view the financial analytics through dashboards and reports created in **Power BI**.
+1. **User Interaction**: Users interact with the system using browsers or mobile apps to request financial data or to perform operations on the financial data.
+2. **Request Handling**: The requests are handled by the Azure App Service which processes the business logic related to the financial data.
+3. **Data Fetching**: Financial data from multiple external sources are collected and processed by the Azure App Service.
+4. **Data Storage**: The processed financial data is stored in Azure Database for PostgreSQL, serving as the main data repository.
+5. **Data Analysis and Visualization**: Power BI connects to the Azure Database for PostgreSQL to access the stored financial data. It then provides powerful analytics and visualizations to the end users for data-driven decisions.
 
-## Benefits
-
-- **Scalability**: Azure App Service allows easy scaling based on traffic and usage.
-- **Managed Database**: Azure Database for PostgreSQL is a fully managed service ensuring data availability, disaster recovery, and security.
-- **Advanced Analytics**: Power BI provides sophisticated tools for data visualization and business intelligence.
-- **Flexibility**: Capability to integrate data from various financial data sources.
-- **Accessibility**: Application accessible via web and mobile interfaces, increasing user engagement and accessibility.
-
-## Conclusion
-
-This architecture leverages the power of Azure services to provide a scalable, reliable, and secure solution for financial data analytics. Users can benefit from real-time data insights through an intuitive interface, making informed financial decisions.
+This architecture ensures scalable, secure and efficient processing and analysis of financial data, leveraging the power of Azure cloud services.

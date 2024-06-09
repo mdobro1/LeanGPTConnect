@@ -15,13 +15,17 @@ response = OpenAI().chat.completions.create(
     {
       "role": "user",
       "content": [
-        {"type": "text", "text": "Analyse class diagramm and generate C# code."},
-        {"type": "text", "text": "Make output as README-markdown."},
-        {"type": "text", "text": f"Architecture diagramm is stored in {image_filename}."},
         {"type": "image_url","image_url": { "url": f"data:image/jpeg;base64,{base64_image}" }},
+        {"type": "text", "text": "Analyse class diagramm and generate C# code."},
+        {"type": "text", "text": f"Include hyperlink for class diagramm stored in {image_filename}."},
+        {"type": "text", "text": "Make output as README-markdown."},
       ]
     }
-  ], max_tokens=3000
+  ], max_tokens=4000
 )
 
-print(f"\n{response.choices[0].message.content}")
+# print & save result
+result = response.choices[0].message.content
+print(result)
+with open(f"./demo/vision/Listing_7_Response.md", "w", encoding="utf-8") as outfile: 
+  outfile.write(result)

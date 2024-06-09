@@ -17,11 +17,15 @@ response = OpenAI().chat.completions.create(
       "content": [
         {"type": "text", "text": "Analyse architecture."},
         {"type": "text", "text": "Make output as README-markdown."},
-        {"type": "text", "text": f"Architecture diagramm is stored in {image_filename}."},
+        {"type": "text", "text": f"Include hyperlink for Architecture diagramm stored in {image_filename}."},
         {"type": "image_url","image_url": { "url": f"data:image/jpeg;base64,{base64_image}" }},
       ]
     }
   ], max_tokens=2000
 )
 
-print(f"\n{response.choices[0].message.content}")
+# print & save result
+result = response.choices[0].message.content
+print(result)
+with open(f"./demo/vision/Listing_6_Response.md", "w", encoding="utf-8") as outfile: 
+  outfile.write(result)
