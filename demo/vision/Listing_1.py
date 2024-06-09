@@ -10,7 +10,7 @@ response = OpenAI().chat.completions.create(
         {
           "type": "image_url",
           "image_url": {
-            "url": "https://bit.ly/3RgIh7O"
+            "url": "https://bit.ly/img_city_1"
           }
         }
       ]
