@@ -1,7 +1,7 @@
 from openai import OpenAI
 import json
 
-with open("./demo/text_generation_multi_modal/images_list.json", 'r') as file:  images_urls = json.load(file)
+with open("./demo/vision/images_list.json", 'r') as file:  images_urls = json.load(file)
 
 response = OpenAI().chat.completions.create(
   model="gpt-4o",

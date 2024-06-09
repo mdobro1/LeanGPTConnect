@@ -140,8 +140,18 @@ Example of the batch prompt JSON-file user_prompts_travel.json:
 
 ## Links
 
++ [OpenAI Models](https://platform.openai.com/docs/models)
+
+### Text generation
+
 + [Developer Quickstart. OpenAI.com](https://platform.openai.com/docs/quickstart)
 + [Quickstart: Get started generating text using Azure OpenAI Service. Microsoft.com](https://learn.microsoft.com/en-us/azure/ai-services/openai/quickstart?tabs=command-line%2Cpython-new&pivots=programming-language-python)
 + [API Reference. OpenAI.com](https://platform.openai.com/docs/api-reference/introduction)
 + [Azure OpenAI Service REST API reference. Microsoft.com](https://platform.openai.com/docs/api-reference/introduction)
 + [Azure OpenAI Service documentation. Microsoft.com](https://learn.microsoft.com/en-us/azure/ai-services/openai/)
+
+### Vision (image input)
+
++ [Vision capabilities. OpenaAI Docs](https://platform.openai.com/docs/guides/vision)
++ [Use GPT-4 Turbo with Vision](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/gpt-with-vision?tabs=python%2Csystem-assigned%2Cresource)
++ [Quickstart: Use images in your AI chats](https://learn.microsoft.com/en-us/azure/ai-services/openai/gpt-v-quickstart?tabs=image%2Ccommand-line&pivots=programming-language-studio)
