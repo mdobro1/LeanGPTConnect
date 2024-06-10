@@ -16,7 +16,8 @@ response = OpenAI().chat.completions.create(
       "role": "user",
       "content": [
         {"type": "image_url","image_url": { "url": f"data:image/jpeg;base64,{base64_image}" }},
-        {"type": "text", "text": "Analyse class diagramm and generate C# code."},
+        {"type": "text", "text": "Analyse class diagramm and generate C# code and add detailed comments & descriptions."},
+        {"type": "text", "text": "Use needed method parameters and add needed implementation."},
         {"type": "text", "text": f"Include hyperlink for class diagramm stored in {image_filename}."},
         {"type": "text", "text": "Make output as README-markdown."},
       ]
